@@ -1,50 +1,60 @@
-from random import randint
-from xml.etree.ElementPath import prepare_descendant
 import numpy as np
 import matplotlib.pyplot as plt
-
 #Ex1
+def gram_matrix(A):
+    transpose_A=A.T
+    return np.dot(A,transpose_A)
 def main():
-    Array=np.array([[1,2,3],[4,5,6]])
-    print(Array)
-    transpose=np.transpose(Array)
-    print(transpose)
-    result=np.dot(Array,transpose)
-    print(result)
+    A=np.array([[1,2,3],[4,5,6]])
+    print(gram_matrix(A))
 if __name__ == '__main__':
+    main()
 
-        main()
 #Ex2
 def line_eqn(x):
-    y=(2*x)+3
+    y = (2 * x) + 3
     return y
-x=[x for x in range(-100,100)]
-y=[line_eqn(x) for x in range(-100,100)]
-line_plot=plt.plot(x,y)
+def main():
+    x = np.linspace(-100, 100, 100)
+    y = line_eqn(x)
 
-plt.show()
+    plt.plot(x, y, label="y = 2x + 3", color="blue")
+    plt.xlabel("x-axis")
+    plt.ylabel("y-axis")
+    plt.title("Graph of y = 2x + 3")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+if __name__ == '__main__':
+    main()
 
 #Ex3
 def quadratic_eqn(x):
     y=(2*x)**2 +3*x + 4
     return y
-x=[x for x in range(-100,100)]
-y=[quadratic_eqn(x) for x in range(-100,100)]
-quadratic_plot=plt.plot(x,y)
-plt.show()
+def main():
+  x=[x for x in range(-100,100)]
+  y=[quadratic_eqn(x) for x in range(-100,100)]
+  quadratic_plot=plt.plot(x,y)
+  plt.show()
+
+if __name__=="__main__":
+    main()
+
 
 #Ex4
-def guassian_eqn(x,m,s):
+def guassian_eqn(x,m,s=15):
     f=(1/(s*np.sqrt(2*np.pi)))*np.exp((-(x-m)**2)/(2*(s)**2))
     return f
-x=[x for x in range(-100,100)]
-m=np.mean(x)
-s=15
-y=[guassian_eqn(x=val,m=m,s=s) for val in range(-100,100)]
-print(len(x))
-print(len(y))
-guassian_plot=plt.plot(x,y)
-plt.show()
+def main():
+    x=[x for x in range(-100,100)]
+    m=np.mean(x)
+    y=[guassian_eqn(x=val,m=m,s=15) for val in range(-100,100)]
+    guassian_plot=plt.plot(x,y,marker='o')
+    plt.show()
+
+if __name__ == '__main__':
+    main()
 
 #Ex5
 def original_fun(x):
@@ -53,20 +63,16 @@ def original_fun(x):
 def grad_fun(x):
    y=np.diff(x)**2
    return y
-x=np.arange(-100,100)
-y1=original_fun(x)
-y2=grad_fun(x)
-x_plot=x[:-1]
-
-plt.plot(x,y1)
-plt.plot(x_plot,y2)
-plt.show()
-
-
-
-
-
-
+def main():
+    x=np.arange(-100,100)
+    y1=original_fun(x)
+    y2=grad_fun(x)
+    x_plot=x[:-1]
+    plt.plot(x,y1)
+    plt.plot(x_plot,y2)
+    plt.show()
+if __name__=="__main__":
+    main()
 
 
 # import pandas as pd
